@@ -4,50 +4,39 @@
     ViewData["Title"] = "Delete Passenger";
 }
 
-<div class="max-w-[1280px] mx-auto px-8 py-12">
-    <div class="flex items-center gap-4 mb-8">
-        <a asp-action="Index" class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container text-primary hover:bg-primary hover:text-on-primary transition-all shadow-sm">
-            <span class="material-symbols-outlined">arrow_back</span>
-        </a>
-        <h1 class="font-headline-lg text-headline-lg text-on-surface">Delete Record</h1>
-    </div>
-
-    <div class="max-w-2xl mx-auto">
-        <div class="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
-            <div class="bg-error/5 p-10 text-center border-b border-slate-100">
-                <div class="w-20 h-20 bg-error/10 text-error rounded-full flex items-center justify-center mx-auto mb-6">
-                    <span class="material-symbols-outlined !text-4xl">person_remove</span>
+<div class="bg-slate-50 min-h-screen py-12 px-8 flex items-center justify-center">
+    <div class="max-w-[500px] w-full">
+        <div class="bg-white border border-slate-200 rounded-xl shadow-lg overflow-hidden">
+            <div class="p-8 text-center border-b border-slate-100">
+                <div class="w-16 h-16 bg-rose-50 text-rose-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span class="material-symbols-outlined !text-3xl">delete_forever</span>
                 </div>
-                <h2 class="text-2xl font-bold text-on-surface mb-2">Delete Passenger Record?</h2>
-                <p class="text-on-surface-variant max-w-sm mx-auto">
-                    You are about to remove <span class="font-bold text-on-surface">@Model.FullName</span> from the system. This will permanently erase their profile and booking history.
+                <h2 class="text-xl font-bold text-slate-900">Delete Passenger?</h2>
+                <p class="text-sm text-slate-500 mt-2">
+                    Are you sure you want to remove <span class="font-bold text-slate-900">@Model.FullName</span>? This action cannot be undone.
                 </p>
             </div>
             
-            <div class="p-8">
-                <div class="bg-slate-50 rounded-2xl p-6 mb-8">
-                    <div class="grid grid-cols-2 gap-6">
-                        <div>
-                            <div class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Passport</div>
-                            <div class="font-bold text-on-surface font-mono">@Model.PassportNumber</div>
-                        </div>
-                        <div>
-                            <div class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Account ID</div>
-                            <div class="font-bold text-on-surface">#@Model.Id</div>
-                        </div>
+            <div class="p-8 bg-slate-50">
+                <div class="space-y-3 mb-8">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-slate-500">Passenger ID</span>
+                        <span class="font-medium text-slate-900">#@Model.Id</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-slate-500">Passport</span>
+                        <span class="font-medium text-slate-900 uppercase">@Model.PassportNumber</span>
                     </div>
                 </div>
 
-                <form asp-action="Delete">
+                <form asp-action="Delete" class="flex flex-col gap-3">
                     <input type="hidden" asp-for="Id" />
-                    <div class="flex flex-col gap-4">
-                        <button type="submit" class="w-full py-4 bg-error text-white rounded-xl font-bold shadow-lg hover:bg-error/90 transition-all active:scale-95 flex items-center justify-center gap-2">
-                            <span class="material-symbols-outlined">delete_forever</span> Confirm Deletion
-                        </button>
-                        <a asp-action="Index" class="w-full py-4 bg-white border border-outline text-on-surface-variant rounded-xl font-bold text-center hover:bg-slate-50 transition-all active:scale-95">
-                            Cancel and Keep Record
-                        </a>
-                    </div>
+                    <button type="submit" class="w-full py-3 bg-rose-600 text-white font-bold rounded-lg hover:bg-rose-700 transition-all shadow-sm">
+                        Confirm Deletion
+                    </button>
+                    <a asp-action="Index" class="w-full py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-lg text-center hover:bg-slate-50 transition-all">
+                        Cancel
+                    </a>
                 </form>
             </div>
         </div>

@@ -1,100 +1,58 @@
 @model FlightReservationSystem.Models.Flight
 
 @{
-    ViewData["Title"] = "Edit Flight";
+    ViewData["Title"] = "Update Flight";
 }
 
-<div class="max-w-[1280px] mx-auto px-8 py-12">
-    <div class="flex items-center gap-4 mb-8">
-        <a asp-action="Index" class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container text-primary hover:bg-primary hover:text-on-primary transition-all shadow-sm">
-            <span class="material-symbols-outlined">arrow_back</span>
-        </a>
-        <h1 class="font-headline-lg text-headline-lg text-on-surface">Edit Flight: <span class="text-primary">@Model.FlightNumber</span></h1>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <!-- Main Form -->
-        <div class="lg:col-span-2">
-            <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-                <div class="p-8">
-                    <form asp-action="Edit">
-                        <div asp-validation-summary="ModelOnly" class="bg-error/10 text-error p-4 rounded-xl mb-6 text-sm"></div>
-                        <input type="hidden" asp-for="Id" />
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="space-y-2">
-                                <label asp-for="FlightNumber" class="font-label-md text-on-surface-variant flex items-center gap-2">
-                                    <span class="material-symbols-outlined text-sm text-primary">tag</span> Flight Number
-                                </label>
-                                <input asp-for="FlightNumber" class="w-full bg-slate-50 border-none rounded-xl p-4 focus:ring-2 focus:ring-primary focus:bg-white transition-all" placeholder="e.g. SR-123" />
-                                <span asp-validation-for="FlightNumber" class="text-xs text-error"></span>
-                            </div>
-
-                            <div class="space-y-2">
-                                <label asp-for="Price" class="font-label-md text-on-surface-variant flex items-center gap-2">
-                                    <span class="material-symbols-outlined text-sm text-primary">payments</span> Price (USD)
-                                </label>
-                                <input asp-for="Price" class="w-full bg-slate-50 border-none rounded-xl p-4 focus:ring-2 focus:ring-primary focus:bg-white transition-all" placeholder="0.00" />
-                                <span asp-validation-for="Price" class="text-xs text-error"></span>
-                            </div>
-
-                            <div class="space-y-2">
-                                <label asp-for="FromCity" class="font-label-md text-on-surface-variant flex items-center gap-2">
-                                    <span class="material-symbols-outlined text-sm text-primary">flight_takeoff</span> Origin City
-                                </label>
-                                <input asp-for="FromCity" class="w-full bg-slate-50 border-none rounded-xl p-4 focus:ring-2 focus:ring-primary focus:bg-white transition-all" placeholder="City or Airport" />
-                                <span asp-validation-for="FromCity" class="text-xs text-error"></span>
-                            </div>
-
-                            <div class="space-y-2">
-                                <label asp-for="ToCity" class="font-label-md text-on-surface-variant flex items-center gap-2">
-                                    <span class="material-symbols-outlined text-sm text-primary">flight_land</span> Destination City
-                                </label>
-                                <input asp-for="ToCity" class="w-full bg-slate-50 border-none rounded-xl p-4 focus:ring-2 focus:ring-primary focus:bg-white transition-all" placeholder="City or Airport" />
-                                <span asp-validation-for="ToCity" class="text-xs text-error"></span>
-                            </div>
-                        </div>
-
-                        <div class="mt-10 flex gap-4">
-                            <button type="submit" class="bg-primary text-on-primary px-8 py-4 rounded-xl font-headline-md flex items-center gap-2 hover:bg-primary/90 transition-all active:scale-95 shadow-lg">
-                                <span class="material-symbols-outlined">save</span> Save Changes
-                            </button>
-                            <a asp-action="Index" class="border border-outline text-on-surface-variant px-8 py-4 rounded-xl font-headline-md bg-white hover:bg-slate-50 transition-all active:scale-95">
-                                Cancel
-                            </a>
-                        </div>
-                    </form>
-                </div>
-            </div>
+<div class="bg-slate-50 min-h-screen py-12 px-8">
+    <div class="max-w-[800px] mx-auto">
+        <!-- Header -->
+        <div class="flex items-center gap-4 mb-8">
+            <a asp-action="Index" class="text-slate-400 hover:text-slate-600 transition-colors">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </a>
+            <h1 class="text-2xl font-bold text-slate-900">Update Flight Record</h1>
         </div>
 
-        <!-- Sidebar Info -->
-        <div class="space-y-6">
-            <div class="bg-surface-container p-8 rounded-3xl border border-slate-200">
-                <h3 class="font-headline-sm text-headline-sm text-on-surface mb-4">Quick Stats</h3>
-                <div class="space-y-4">
-                    <div class="flex justify-between items-center pb-4 border-b border-slate-200">
-                        <span class="text-sm text-on-surface-variant">Last Modified</span>
-                        <span class="text-sm font-bold text-on-surface">Today</span>
+        <!-- Form Card -->
+        <div class="bg-white border border-slate-200 rounded-xl shadow-sm p-8 lg:p-10">
+            <form asp-action="Edit" class="space-y-6">
+                <div asp-validation-summary="ModelOnly" class="text-sm text-rose-600 bg-rose-50 p-4 rounded-lg border border-rose-100"></div>
+                <input type="hidden" asp-for="Id" />
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-1.5">
+                        <label asp-for="FlightNumber" class="text-xs font-bold text-slate-500 uppercase">Flight Number</label>
+                        <input asp-for="FlightNumber" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" />
+                        <span asp-validation-for="FlightNumber" class="text-xs text-rose-600"></span>
                     </div>
-                    <div class="flex justify-between items-center pb-4 border-b border-slate-200">
-                        <span class="text-sm text-on-surface-variant">Current Bookings</span>
-                        <span class="text-sm font-bold text-primary">12</span>
+
+                    <div class="space-y-1.5">
+                        <label asp-for="Price" class="text-xs font-bold text-slate-500 uppercase">Fare (USD)</label>
+                        <input asp-for="Price" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" />
+                        <span asp-validation-for="Price" class="text-xs text-rose-600"></span>
                     </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-sm text-on-surface-variant">Status</span>
-                        <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-bold uppercase">Active</span>
+
+                    <div class="space-y-1.5">
+                        <label asp-for="FromCity" class="text-xs font-bold text-slate-500 uppercase">Origin City</label>
+                        <input asp-for="FromCity" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" />
+                        <span asp-validation-for="FromCity" class="text-xs text-rose-600"></span>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label asp-for="ToCity" class="text-xs font-bold text-slate-500 uppercase">Destination City</label>
+                        <input asp-for="ToCity" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" />
+                        <span asp-validation-for="ToCity" class="text-xs text-rose-600"></span>
                     </div>
                 </div>
-            </div>
 
-            <div class="bg-error/5 p-8 rounded-3xl border border-error/20">
-                <h3 class="font-headline-sm text-headline-sm text-error mb-2">Danger Zone</h3>
-                <p class="text-sm text-on-surface-variant mb-6">Removing this flight will affect all existing bookings. Please proceed with caution.</p>
-                <a asp-action="Delete" asp-route-id="@Model.Id" class="w-full inline-flex justify-center py-3 bg-white border border-error rounded-xl text-sm font-bold text-error hover:bg-error hover:text-white transition-all">
-                    Delete Flight
-                </a>
-            </div>
+                <div class="pt-6 border-t border-slate-100 flex items-center gap-4">
+                    <button type="submit" class="px-8 py-3 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 transition-all shadow-sm">
+                        Save Changes
+                    </button>
+                    <a asp-action="Index" class="text-sm font-bold text-slate-500 hover:text-slate-700">Cancel</a>
+                </div>
+            </form>
         </div>
     </div>
 </div>

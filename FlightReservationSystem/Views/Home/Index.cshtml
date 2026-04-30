@@ -1,164 +1,244 @@
 @{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "SkyReserve - Elevate Your Journey";
 }
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
 <!-- Hero Section -->
-<section class="relative h-[819px] flex items-center justify-center overflow-hidden bg-gradient-to-b from-surface-container-low to-background">
-    <!-- Animated Plane Container -->
-    <div class="absolute inset-0 pointer-events-none z-10">
-        <div class="animate-plane absolute top-1/2 left-0 text-primary/20">
-            <span class="material-symbols-outlined !text-[120px]">flight</span>
-        </div>
+<section class="relative h-screen flex items-center justify-center overflow-hidden bg-[#050b14]">
+    <!-- Dynamic Background -->
+    <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-gradient-to-b from-primary/20 via-transparent to-[#050b14]"></div>
+        <img src="https://images.unsplash.com/photo-1542296332-2e4473faf563?q=80&w=2000" class="w-full h-full object-cover opacity-40 scale-110 animate-slow-zoom" alt="SkyReserve Hero" />
     </div>
-    <div class="max-w-[1280px] mx-auto px-8 w-full relative z-20 flex flex-col md:flex-row items-center gap-12">
-        <div class="flex-1 space-y-6">
-            <h1 class="font-display text-display text-on-surface leading-tight">
-                Book Your <span class="text-primary-container">Dream Flight</span>
-            </h1>
-            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
-                Experience the ultimate in travel efficiency and serenity. SkyReserve connects you to over 500 global destinations with atmospheric clarity.
-            </p>
-            <div class="flex gap-4">
-                <button class="bg-primary-container text-on-primary px-8 py-4 rounded-xl font-headline-md shadow-lg hover:shadow-xl transition-all active:scale-95">
-                    Search Flights
-                </button>
-                <button class="border border-outline text-primary px-8 py-4 rounded-xl font-headline-md bg-white/50 hover:bg-white transition-all active:scale-95">
-                    View Deals
-                </button>
+
+    <!-- Floating Particles -->
+    <div class="absolute inset-0 pointer-events-none z-10" id="hero-particles"></div>
+
+    <div class="max-w-[1400px] mx-auto px-8 w-full relative z-50 -mt-24">
+        <div class="max-w-3xl">
+            <div class="hero-reveal opacity-0">
+                <span class="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary/20 border border-primary/30 text-primary-container text-xs font-black uppercase tracking-[0.3em]">
+                    The Future of Aviation
+                </span>
+                <h1 class="font-display text-[clamp(3rem,8vw,6rem)] leading-[0.9] text-white font-black tracking-tighter mb-8">
+                    Elevate Your <br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-container via-blue-400 to-emerald-400">Atmosphere</span>
+                </h1>
+                <p class="text-slate-400 text-xl md:text-2xl font-medium max-w-xl mb-12 leading-relaxed">
+                    Experience the pinnacle of travel technology. SkyReserve seamlessly connects global nodes with unmatched precision and luxury.
+                </p>
+                <div class="flex flex-wrap gap-6">
+                    <a asp-controller="Flights" asp-action="Index" class="px-10 py-5 bg-primary text-white rounded-[2rem] font-black shadow-2xl shadow-primary/20 hover:scale-105 transition-all active:scale-95 flex items-center gap-3 group">
+                        Begin Expedition
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </a>
+                    <a asp-controller="Flights" asp-action="Index" class="px-10 py-5 bg-white/5 backdrop-blur-xl border border-white/10 text-white rounded-[2rem] font-black hover:bg-white/10 transition-all">
+                        View Fleet
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="flex-1 relative hidden lg:block">
-            <div class="aspect-square rounded-full bg-primary/5 absolute -top-12 -right-12 w-full h-full animate-pulse"></div>
-            <img class="relative z-30 w-full h-auto rounded-3xl shadow-2xl border-4 border-white object-cover aspect-[4/3]" src="https://images.unsplash.com/photo-1436491865332-7a61a109c0f2?q=80&w=1200" alt="SkyReserve Flight" />
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="absolute bottom-0 left-0 w-full z-30 p-8">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-t border-white/10">
+            <div class="stat-item opacity-0">
+                <div class="text-4xl font-black text-white mb-1">500+</div>
+                <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Global Nodes</div>
+            </div>
+            <div class="stat-item opacity-0">
+                <div class="text-4xl font-black text-white mb-1">12M</div>
+                <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Atmospheric Miles</div>
+            </div>
+            <div class="stat-item opacity-0">
+                <div class="text-4xl font-black text-white mb-1">99.9%</div>
+                <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Precision Rating</div>
+            </div>
+            <div class="stat-item opacity-0">
+                <div class="text-4xl font-black text-white mb-1">24/7</div>
+                <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Node Monitoring</div>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- Search Widget / Cards Section (Bento Grid) -->
-<section class="max-w-[1280px] mx-auto px-8 -mt-24 relative z-40 mb-24">
-    <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-200">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div class="space-y-2">
-                <label class="font-label-md text-on-surface-variant flex items-center gap-2">
-                    <span class="material-symbols-outlined text-sm">flight_takeoff</span> FROM
-                </label>
-                <input class="w-full bg-slate-50 border-none rounded-xl p-4 focus:ring-2 focus:ring-primary focus:bg-white transition-all" placeholder="London, LHR" type="text" />
-            </div>
-            <div class="space-y-2">
-                <label class="font-label-md text-on-surface-variant flex items-center gap-2">
-                    <span class="material-symbols-outlined text-sm">flight_land</span> TO
-                </label>
-                <input class="w-full bg-slate-50 border-none rounded-xl p-4 focus:ring-2 focus:ring-primary focus:bg-white transition-all" placeholder="New York, JFK" type="text" />
-            </div>
-            <div class="space-y-2">
-                <label class="font-label-md text-on-surface-variant flex items-center gap-2">
-                    <span class="material-symbols-outlined text-sm">calendar_today</span> DEPARTURE
-                </label>
-                <input class="w-full bg-slate-50 border-none rounded-xl p-4 focus:ring-2 focus:ring-primary focus:bg-white transition-all" type="date" />
-            </div>
-            <div class="flex items-end">
-                <button class="w-full bg-primary text-on-primary rounded-xl h-[56px] font-headline-md flex items-center justify-center gap-2 hover:bg-primary/90 transition-all active:scale-95">
-                    <span class="material-symbols-outlined">search</span> Search
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bento Grid Content -->
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mt-16">
-        <div class="md:col-span-8 bg-white p-10 rounded-3xl border border-slate-100 shadow-sm flex flex-col justify-between min-h-[400px]">
-            <div>
-                <div class="flex gap-2 mb-4">
-                    <span class="bg-surface-container text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Premium Service</span>
+<!-- Search Console -->
+<section class="relative z-40 -mt-16 px-8 max-w-[1400px] mx-auto mb-32">
+    <div class="bg-[#0b1c30] p-4 rounded-[3rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] border border-white/5">
+        <div class="bg-white/5 rounded-[2.5rem] p-8 md:p-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <div class="space-y-4">
+                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm text-primary">location_on</span> Departure Node
+                    </label>
+                    <input type="text" class="w-full bg-white/5 border-none rounded-2xl p-5 text-white placeholder-slate-600 focus:ring-2 focus:ring-primary focus:bg-white/10 transition-all" placeholder="Enter Origin" />
                 </div>
-                <h2 class="font-headline-lg text-headline-lg mb-4">Fly with Unmatched Comfort</h2>
-                <p class="text-on-surface-variant max-w-lg">Our newly updated fleet features lie-flat seats and curated dining experiences that make long-haul flights feel like a stay at a five-star hotel.</p>
-            </div>
-            <div class="mt-8">
-                <button class="flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all">
-                    Learn more about our fleet <span class="material-symbols-outlined">arrow_forward</span>
-                </button>
-            </div>
-        </div>
-        <div class="md:col-span-4 grid grid-rows-2 gap-6">
-            <div class="bg-primary-container p-8 rounded-3xl text-on-primary flex flex-col justify-between">
-                <span class="material-symbols-outlined !text-4xl">loyalty</span>
-                <div>
-                    <h3 class="font-headline-md text-headline-md mb-2">SkyPoints</h3>
-                    <p class="text-sm opacity-90">Earn 5x points on every booking with our flagship loyalty program.</p>
+                <div class="space-y-4">
+                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm text-primary">flight_land</span> Arrival Node
+                    </label>
+                    <input type="text" class="w-full bg-white/5 border-none rounded-2xl p-5 text-white placeholder-slate-600 focus:ring-2 focus:ring-primary focus:bg-white/10 transition-all" placeholder="Enter Destination" />
                 </div>
-            </div>
-            <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm flex flex-col justify-between">
-                <span class="material-symbols-outlined text-primary !text-4xl">support_agent</span>
-                <div>
-                    <h3 class="font-headline-md text-headline-md mb-2">24/7 Support</h3>
-                    <p class="text-sm text-on-surface-variant">Our concierge team is always available for your needs.</p>
+                <div class="space-y-4">
+                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm text-primary">calendar_month</span> Expedition Date
+                    </label>
+                    <input type="date" class="w-full bg-white/5 border-none rounded-2xl p-5 text-white focus:ring-2 focus:ring-primary focus:bg-white/10 transition-all [color-scheme:dark]" />
+                </div>
+                <div class="flex items-end">
+                    <a asp-controller="Flights" asp-action="Index" class="w-full bg-primary text-white rounded-2xl h-[64px] font-black flex items-center justify-center gap-3 hover:bg-blue-600 transition-all active:scale-95 shadow-xl shadow-primary/20">
+                        <span class="material-symbols-outlined">radar</span>
+                        Sync Itinerary
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Featured Destinations -->
-<section class="max-w-[1280px] mx-auto px-8 mb-24">
-    <div class="flex justify-between items-end mb-12">
-        <div>
-            <h2 class="font-headline-lg text-headline-lg mb-2">Popular Destinations</h2>
-            <p class="text-on-surface-variant">Curated escapes for the modern traveler.</p>
-        </div>
-        <button class="text-primary font-bold">View all destinations</button>
+<!-- Features Grid -->
+<section class="max-w-[1400px] mx-auto px-8 mb-32">
+    <div class="text-center mb-20">
+        <h2 class="text-5xl font-black text-slate-900 tracking-tighter mb-4">Core Advantage</h2>
+        <p class="text-slate-500 font-medium max-w-xl mx-auto">Propelling travel into the next century with integrated intelligence.</p>
     </div>
+
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Card 1 -->
-        <div class="group cursor-pointer overflow-hidden rounded-3xl border border-slate-200 bg-white transition-all hover:shadow-lg">
-            <div class="h-64 overflow-hidden">
-                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=80&w=800" alt="Sydney" />
+        <div class="feature-card glass-card p-10 group cursor-default">
+            <div class="w-16 h-16 bg-primary/5 text-primary rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                <span class="material-symbols-outlined !text-3xl">terminal</span>
             </div>
-            <div class="p-6">
-                <div class="flex justify-between items-start mb-2">
-                    <h4 class="font-headline-md text-headline-md">Sydney, Australia</h4>
-                    <span class="text-primary font-bold text-lg">$1,240</span>
-                </div>
-                <p class="text-on-surface-variant text-sm mb-4">The ultimate harbor-side escape featuring iconic landmarks.</p>
-                <div class="flex gap-2">
-                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs">Direct</span>
-                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs">Free WiFi</span>
-                </div>
-            </div>
+            <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Smart Manifest</h3>
+            <p class="text-slate-500 leading-relaxed font-medium">Automated booking synchronization across global aviation networks in milliseconds.</p>
         </div>
-        <!-- Card 2 -->
-        <div class="group cursor-pointer overflow-hidden rounded-3xl border border-slate-200 bg-white transition-all hover:shadow-lg">
-            <div class="h-64 overflow-hidden">
-                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=800" alt="Kyoto" />
+        <div class="feature-card glass-card p-10 group cursor-default">
+            <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500">
+                <span class="material-symbols-outlined !text-3xl">shield_moon</span>
             </div>
-            <div class="p-6">
-                <div class="flex justify-between items-start mb-2">
-                    <h4 class="font-headline-md text-headline-md">Kyoto, Japan</h4>
-                    <span class="text-primary font-bold text-lg">$980</span>
-                </div>
-                <p class="text-on-surface-variant text-sm mb-4">Discover ancient traditions and tranquil landscapes.</p>
-                <div class="flex gap-2">
-                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs">1 Stop</span>
-                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs">Cultural Tour</span>
-                </div>
-            </div>
+            <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Biometric Flow</h3>
+            <p class="text-slate-500 leading-relaxed font-medium">Experience zero-touch boarding protocols with our proprietary identity mesh technology.</p>
         </div>
-        <!-- Card 3 -->
-        <div class="group cursor-pointer overflow-hidden rounded-3xl border border-slate-200 bg-white transition-all hover:shadow-lg">
-            <div class="h-64 overflow-hidden">
-                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=800" alt="London" />
+        <div class="feature-card glass-card p-10 group cursor-default">
+            <div class="w-16 h-16 bg-amber-50 text-amber-600 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white transition-all duration-500">
+                <span class="material-symbols-outlined !text-3xl">rocket_launch</span>
             </div>
-            <div class="p-6">
-                <div class="flex justify-between items-start mb-2">
-                    <h4 class="font-headline-md text-headline-md">London, UK</h4>
-                    <span class="text-primary font-bold text-lg">$650</span>
-                </div>
-                <p class="text-on-surface-variant text-sm mb-4">Modern energy meets historic grandeur in the heart of Europe.</p>
-                <div class="flex gap-2">
-                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs">Direct</span>
-                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs">Night Flight</span>
+            <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Hyper-Sonic</h3>
+            <p class="text-slate-500 leading-relaxed font-medium">Access next-generation sub-orbital routes that redefine the speed of global transit.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Cinematic Experience -->
+<section class="max-w-[1400px] mx-auto px-8 mb-32" id="cinematic-section">
+    <div class="glass-card overflow-hidden relative group border border-white/10 shadow-2xl bg-[#0b1c30]">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#050b14] via-transparent to-transparent z-10 opacity-60"></div>
+        
+        <video 
+            id="scroll-video"
+            class="w-full h-full object-cover aspect-video opacity-90 transition-transform duration-1000 group-hover:scale-105"
+            muted 
+            loop 
+            playsinline
+            preload="auto">
+            <source src="/videos/untitled_Runway Gen-4.5_2026-04-30_12-56-31.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="absolute bottom-0 left-0 p-8 md:p-16 z-20 w-full flex justify-between items-end">
+            <div class="max-w-2xl">
+                <span class="inline-block px-4 py-1.5 mb-4 rounded-full bg-primary/20 border border-primary/30 text-primary-container text-[10px] font-black uppercase tracking-[0.2em] backdrop-blur-md">
+                    Live the Experience
+                </span>
+                <h2 class="text-4xl md:text-5xl font-black text-white tracking-tighter mb-4">
+                    The Art of <br/> Modern Flight
+                </h2>
+                <p class="text-slate-300 font-medium max-w-lg">
+                    Witness the convergence of technology and luxury in every frame of our journey.
+                </p>
+            </div>
+            <div class="hidden md:block">
+                <div class="w-24 h-24 rounded-full border border-white/20 flex items-center justify-center backdrop-blur-xl group-hover:border-primary/50 transition-colors">
+                    <span class="material-symbols-outlined text-white text-5xl animate-pulse">play_circle</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<style>
+    @@keyframes slow-zoom {
+        from { transform: scale(1); }
+        to { transform: scale(1.15); }
+    }
+    .animate-slow-zoom {
+        animation: slow-zoom 20s ease-in-out infinite alternate;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Animations
+        gsap.to('.hero-reveal', {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            ease: 'expo.out',
+            delay: 0.5
+        });
+
+        gsap.to('.stat-item', {
+            opacity: 1,
+            stagger: 0.2,
+            duration: 1,
+            ease: 'power3.out',
+            delay: 1.2
+        });
+
+        // Feature Cards Scroll Animation
+        gsap.from('.feature-card', {
+            scrollTrigger: {
+                trigger: '.feature-card',
+                start: 'top 80%',
+            },
+            y: 60,
+            opacity: 0,
+            stagger: 0.2,
+            duration: 1,
+            ease: 'power4.out'
+        });
+
+        // Video Scroll Observer
+        const video = document.getElementById('scroll-video');
+        if (video) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        video.play().catch(e => console.log("Video play blocked or interrupted"));
+                    } else {
+                        video.pause();
+                    }
+                });
+            }, { threshold: 0.3 }); // Play when 30% visible
+
+            observer.observe(video);
+        }
+
+        // Cinematic Section GSAP Animation
+        gsap.from('#cinematic-section', {
+            scrollTrigger: {
+                trigger: '#cinematic-section',
+                start: 'top 85%',
+            },
+            y: 100,
+            scale: 0.95,
+            opacity: 0,
+            duration: 1.5,
+            ease: 'expo.out'
+        });
+    });
+</script>

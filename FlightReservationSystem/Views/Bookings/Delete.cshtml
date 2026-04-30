@@ -4,65 +4,59 @@
     ViewData["Title"] = "Cancel Booking";
 }
 
-<div class="max-w-[1280px] mx-auto px-8 py-12">
-    <div class="flex items-center gap-4 mb-8">
-        <a asp-action="Index" class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container text-primary hover:bg-primary hover:text-on-primary transition-all shadow-sm">
-            <span class="material-symbols-outlined">arrow_back</span>
-        </a>
-        <h1 class="font-headline-lg text-headline-lg text-on-surface">Cancel Booking</h1>
-    </div>
-
-    <div class="max-w-2xl mx-auto">
-        <div class="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
-            <div class="bg-error/5 p-10 text-center border-b border-slate-100">
-                <div class="w-20 h-20 bg-error/10 text-error rounded-full flex items-center justify-center mx-auto mb-6">
-                    <span class="material-symbols-outlined !text-4xl">cancel</span>
-                </div>
-                <h2 class="text-2xl font-bold text-on-surface mb-2">Confirm Cancellation?</h2>
-                <p class="text-on-surface-variant max-w-sm mx-auto">
-                    You are about to cancel booking <span class="font-bold text-on-surface">#@Model.Id</span> for <span class="font-bold text-on-surface">@Model.Passenger?.FullName</span>.
-                </p>
+<div class="bg-slate-50 min-h-screen py-12 px-8">
+    <div class="max-w-[500px] mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <div class="w-16 h-16 bg-rose-50 text-rose-600 rounded-full flex items-center justify-center mx-auto mb-4 border border-rose-100">
+                <span class="material-symbols-outlined !text-3xl">delete</span>
             </div>
-            
-            <div class="p-8">
-                <div class="bg-slate-50 rounded-2xl p-6 mb-8 space-y-4">
-                    <div class="flex justify-between items-center">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Flight</span>
-                        <span class="font-bold text-on-surface">@Model.Flight?.FlightNumber</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Route</span>
-                        <span class="font-bold text-on-surface">@Model.Flight?.FromCity → @Model.Flight?.ToCity</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Seat</span>
-                        <span class="font-bold text-primary">@Model.SeatNumber</span>
-                    </div>
-                </div>
+            <h1 class="text-2xl font-bold text-slate-900">Cancel Reservation</h1>
+            <p class="text-sm text-slate-500 mt-2">Are you sure you want to permanently remove this booking?</p>
+        </div>
 
-                <form asp-action="Delete">
-                    <input type="hidden" asp-for="Id" />
-                    <div class="flex flex-col gap-4">
-                        <button type="submit" class="w-full py-4 bg-error text-white rounded-xl font-bold shadow-lg hover:bg-error/90 transition-all active:scale-95 flex items-center justify-center gap-2">
-                            <span class="material-symbols-outlined">event_busy</span> Confirm Cancellation
-                        </button>
-                        <a asp-action="Index" class="w-full py-4 bg-white border border-outline text-on-surface-variant rounded-xl font-bold text-center hover:bg-slate-50 transition-all active:scale-95">
-                            Keep Booking
-                        </a>
-                    </div>
-                </form>
+        <!-- Info Card -->
+        <div class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden mb-6">
+            <div class="p-6 bg-slate-50 border-b border-slate-200">
+                <div class="text-xs font-bold text-slate-400 uppercase mb-1">Booking Reference</div>
+                <div class="text-lg font-bold text-slate-900">#@Model.Id.ToString("D6")</div>
+            </div>
+            <div class="p-6 space-y-4">
+                <div class="flex justify-between items-center">
+                    <span class="text-xs font-bold text-slate-500 uppercase">Passenger</span>
+                    <span class="text-sm font-bold text-slate-900">@Model.Passenger?.FullName</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-xs font-bold text-slate-500 uppercase">Flight</span>
+                    <span class="text-sm font-bold text-slate-900">@Model.Flight?.FlightNumber</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-xs font-bold text-slate-500 uppercase">Seat</span>
+                    <span class="text-sm font-bold text-primary">@Model.SeatNumber</span>
+                </div>
             </div>
         </div>
-        
-        <div class="mt-8 p-6 bg-surface-container rounded-2xl border border-slate-200">
+
+        <!-- Action Form -->
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <div class="flex flex-col gap-3">
+                <button type="submit" class="w-full py-3.5 bg-rose-600 text-white font-bold rounded-lg hover:bg-rose-700 transition-all shadow-sm">
+                    Confirm Cancellation
+                </button>
+                <a asp-action="Index" class="w-full py-3.5 bg-white border border-slate-200 text-slate-600 font-bold rounded-lg hover:bg-slate-50 transition-all text-center">
+                    Keep Booking
+                </a>
+            </div>
+        </form>
+
+        <!-- Policy Note -->
+        <div class="mt-8 p-6 bg-slate-900 rounded-xl">
             <div class="flex gap-4">
                 <span class="material-symbols-outlined text-primary">info</span>
-                <div>
-                    <h4 class="text-sm font-bold text-on-surface mb-1">Refund Policy</h4>
-                    <p class="text-xs text-on-surface-variant leading-relaxed">
-                        Cancellations made within 24 hours of departure may be subject to a fee. Please refer to the service terms for more information.
-                    </p>
-                </div>
+                <p class="text-[11px] text-slate-400 leading-relaxed">
+                    By confirming this action, the allocated seat will be immediately released back to the inventory. This action cannot be undone.
+                </p>
             </div>
         </div>
     </div>

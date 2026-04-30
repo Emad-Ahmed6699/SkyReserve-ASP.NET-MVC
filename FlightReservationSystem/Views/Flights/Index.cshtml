@@ -1,62 +1,77 @@
 @model IEnumerable<FlightReservationSystem.Models.Flight>
 
 @{
-    ViewData["Title"] = "Available Flights";
+    ViewData["Title"] = "Flight Management";
 }
 
-<div class="container py-5 mt-5">
-    <div class="d-flex justify-content-between align-items-end mb-5" data-aos="fade-down">
-        <div>
-            <h1 class="display-4 fw-bold">Available Flights</h1>
-            <p class="text-muted">Find the best deals for your next adventure.</p>
-        </div>
-        <a asp-action="Create" class="btn btn-premium px-4">
-            <i class="fa-solid fa-plus me-2"></i>Add New Flight
-        </a>
-    </div>
-
-    <div class="row g-4">
-        @foreach (var item in Model) {
-            <div class="col-lg-12" data-aos="fade-up">
-                <div class="glass-card d-flex flex-wrap align-items-center justify-content-between gap-4">
-                    <div class="d-flex align-items-center gap-4">
-                        <div class="bg-primary bg-opacity-10 p-4 rounded-4 text-primary">
-                            <i class="fa-solid fa-plane-departure fs-2"></i>
-                        </div>
-                        <div>
-                            <h4 class="mb-0 text-white">#@item.FlightNumber</h4>
-                            <span class="badge bg-primary bg-opacity-25 text-primary rounded-pill mt-1">Premium Economy</span>
-                        </div>
-                    </div>
-
-                    <div class="d-flex align-items-center gap-5 flex-grow-1 justify-content-center px-4">
-                        <div class="text-center">
-                            <h5 class="mb-0 text-white">@item.FromCity</h5>
-                            <small class="text-muted">Departure</small>
-                        </div>
-                        <div class="d-flex align-items-center gap-3">
-                            <div style="height: 1px; width: 50px; background: var(--glass-border);"></div>
-                            <i class="fa-solid fa-plane text-primary"></i>
-                            <div style="height: 1px; width: 50px; background: var(--glass-border);"></div>
-                        </div>
-                        <div class="text-center">
-                            <h5 class="mb-0 text-white">@item.ToCity</h5>
-                            <small class="text-muted">Arrival</small>
-                        </div>
-                    </div>
-
-                    <div class="text-end">
-                        <h3 class="text-primary mb-0">$@item.Price</h3>
-                        <p class="text-muted small mb-3">per person</p>
-                        <div class="d-flex gap-2">
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-light border-opacity-25"><i class="fa-solid fa-pen"></i></a>
-                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-light border-opacity-25"><i class="fa-solid fa-eye"></i></a>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger border-opacity-25"><i class="fa-solid fa-trash"></i></a>
-                            <a href="#" class="btn btn-premium btn-sm px-4">Book</a>
-                        </div>
-                    </div>
-                </div>
+<div class="bg-slate-50 min-h-screen py-12 px-8">
+    <div class="max-w-[1200px] mx-auto">
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10">
+            <div>
+                <h1 class="text-3xl font-bold text-slate-900 tracking-tight">Flight Inventory</h1>
+                <p class="text-slate-500">Manage routes, pricing, and schedule availability.</p>
             </div>
-        }
+            <a asp-action="Create" class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 transition-all shadow-sm">
+                <span class="material-symbols-outlined text-sm">add_circle</span>
+                New Flight
+            </a>
+        </div>
+
+        <!-- Table Card -->
+        <div class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="bg-slate-50 text-slate-500 text-[10px] font-black uppercase tracking-[0.1em]">
+                            <th class="px-6 py-4">Flight ID</th>
+                            <th class="px-6 py-4">Origin</th>
+                            <th class="px-6 py-4">Destination</th>
+                            <th class="px-6 py-4">Fare</th>
+                            <th class="px-6 py-4 text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200">
+                        @foreach (var item in Model) {
+                            <tr class="hover:bg-slate-50/50 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="text-sm font-bold text-slate-900">@item.FlightNumber</div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="text-sm text-slate-600">@item.FromCity</div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="text-sm text-slate-600">@item.ToCity</div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="text-sm font-bold text-slate-900">$@item.Price.ToString("N0")</div>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div class="flex justify-end gap-3">
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="text-slate-400 hover:text-primary transition-colors" title="Edit">
+                                            <span class="material-symbols-outlined text-lg">edit</span>
+                                        </a>
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="text-slate-400 hover:text-primary transition-colors" title="Details">
+                                            <span class="material-symbols-outlined text-lg">visibility</span>
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="text-slate-400 hover:text-rose-600 transition-colors" title="Delete">
+                                            <span class="material-symbols-outlined text-lg">delete</span>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            @if (!Model.Any()) {
+                <div class="p-12 text-center">
+                    <div class="text-slate-300 mb-4">
+                        <span class="material-symbols-outlined !text-6xl">inventory_2</span>
+                    </div>
+                    <p class="text-slate-500 font-medium">No flights found in the registry.</p>
+                </div>
+            }
+        </div>
     </div>
 </div>
