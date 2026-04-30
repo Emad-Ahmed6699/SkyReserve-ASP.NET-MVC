@@ -1,0 +1,218 @@
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="max-w-[1280px] mx-auto px-8 py-12">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+        <div>
+            <h1 class="font-display text-headline-lg text-on-surface mb-2">Operations Dashboard</h1>
+            <p class="text-on-surface-variant">Real-time system health and analytics for SkyReserve.</p>
+        </div>
+        <div class="flex gap-3">
+            <button class="bg-white border border-outline px-4 py-2 rounded-xl text-sm font-bold text-on-surface flex items-center gap-2 hover:bg-slate-50 transition-all shadow-sm">
+                <span class="material-symbols-outlined text-sm">calendar_today</span> Oct 24, 2024
+            </button>
+            <button class="bg-primary text-on-primary px-6 py-2 rounded-xl text-sm font-bold flex items-center gap-2 hover:bg-primary/90 transition-all shadow-md active:scale-95">
+                <span class="material-symbols-outlined text-sm">download</span> Export Report
+            </button>
+        </div>
+    </div>
+
+    <!-- Quick Stats Bento Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+        <!-- Revenue -->
+        <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+            <div class="w-12 h-12 bg-primary/5 text-primary rounded-2xl flex items-center justify-center mb-4">
+                <span class="material-symbols-outlined">payments</span>
+            </div>
+            <div class="text-3xl font-black text-on-surface mb-1">$124.5k</div>
+            <div class="flex items-center gap-2">
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Total Revenue</span>
+                <span class="text-[10px] font-black text-green-600 bg-green-100 px-1.5 py-0.5 rounded">+12%</span>
+            </div>
+        </div>
+
+        <!-- Bookings -->
+        <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+            <div class="w-12 h-12 bg-primary/5 text-primary rounded-2xl flex items-center justify-center mb-4">
+                <span class="material-symbols-outlined">confirmation_number</span>
+            </div>
+            <div class="text-3xl font-black text-on-surface mb-1">1,240</div>
+            <div class="flex items-center gap-2">
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Active Bookings</span>
+                <span class="text-[10px] font-black text-green-600 bg-green-100 px-1.5 py-0.5 rounded">+5%</span>
+            </div>
+        </div>
+
+        <!-- Flights -->
+        <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+            <div class="w-12 h-12 bg-primary/5 text-primary rounded-2xl flex items-center justify-center mb-4">
+                <span class="material-symbols-outlined">flight_takeoff</span>
+            </div>
+            <div class="text-3xl font-black text-on-surface mb-1">45</div>
+            <div class="flex items-center gap-2">
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Flights En Route</span>
+                <span class="text-[10px] font-black text-on-surface-variant bg-slate-100 px-1.5 py-0.5 rounded">Stable</span>
+            </div>
+        </div>
+
+        <!-- Users -->
+        <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+            <div class="w-12 h-12 bg-primary/5 text-primary rounded-2xl flex items-center justify-center mb-4">
+                <span class="material-symbols-outlined">group</span>
+            </div>
+            <div class="text-3xl font-black text-on-surface mb-1">15.2k</div>
+            <div class="flex items-center gap-2">
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Registered Users</span>
+                <span class="text-[10px] font-black text-primary bg-primary/10 px-1.5 py-0.5 rounded">+82</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Main Chart Area -->
+        <div class="lg:col-span-8 space-y-6">
+            <div class="bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-sm">
+                <div class="flex justify-between items-center mb-8">
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface">Revenue Growth</h3>
+                    <div class="flex gap-2">
+                        <button class="px-3 py-1 bg-surface-container text-primary rounded-lg text-xs font-bold">Week</button>
+                        <button class="px-3 py-1 hover:bg-slate-50 text-slate-400 rounded-lg text-xs font-bold">Month</button>
+                    </div>
+                </div>
+                
+                <div class="h-64 flex items-end gap-4 px-4">
+                    <div class="flex-1 bg-primary/10 rounded-t-xl transition-all hover:bg-primary/20" style="height: 45%"></div>
+                    <div class="flex-1 bg-primary/10 rounded-t-xl transition-all hover:bg-primary/20" style="height: 60%"></div>
+                    <div class="flex-1 bg-primary/10 rounded-t-xl transition-all hover:bg-primary/20" style="height: 55%"></div>
+                    <div class="flex-1 bg-primary/10 rounded-t-xl transition-all hover:bg-primary/20" style="height: 80%"></div>
+                    <div class="flex-1 bg-primary/10 rounded-t-xl transition-all hover:bg-primary/20" style="height: 70%"></div>
+                    <div class="flex-1 bg-primary rounded-t-xl shadow-lg shadow-primary/20" style="height: 95%"></div>
+                    <div class="flex-1 bg-primary/10 rounded-t-xl transition-all hover:bg-primary/20" style="height: 85%"></div>
+                </div>
+                
+                <div class="flex justify-between px-4 mt-4">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Mon</span>
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Tue</span>
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Wed</span>
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Thu</span>
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Fri</span>
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Sat</span>
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Sun</span>
+                </div>
+            </div>
+
+            <!-- Recent Notifications -->
+            <div class="bg-surface-container rounded-[2.5rem] p-8 border border-slate-200">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface">Recent Activity</h3>
+                    <button class="text-primary text-sm font-bold">Clear All</button>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded-2xl flex items-center justify-between shadow-sm border border-slate-100">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-green-50 text-green-600 rounded-xl flex items-center justify-center">
+                                <span class="material-symbols-outlined">check_circle</span>
+                            </div>
+                            <div>
+                                <div class="font-bold text-on-surface text-sm">New booking confirmed #BK-992</div>
+                                <div class="text-xs text-on-surface-variant">2 mins ago</div>
+                            </div>
+                        </div>
+                        <span class="material-symbols-outlined text-slate-300">more_vert</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl flex items-center justify-between shadow-sm border border-slate-100">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center">
+                                <span class="material-symbols-outlined">schedule</span>
+                            </div>
+                            <div>
+                                <div class="font-bold text-on-surface text-sm">Flight #QR-702 delayed by 15m</div>
+                                <div class="text-xs text-on-surface-variant">45 mins ago</div>
+                            </div>
+                        </div>
+                        <span class="material-symbols-outlined text-slate-300">more_vert</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl flex items-center justify-between shadow-sm border border-slate-100">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-primary/5 text-primary rounded-xl flex items-center justify-center">
+                                <span class="material-symbols-outlined">person_add</span>
+                            </div>
+                            <div>
+                                <div class="font-bold text-on-surface text-sm">New pilot registered: Capt. Rogers</div>
+                                <div class="text-xs text-on-surface-variant">3 hours ago</div>
+                            </div>
+                        </div>
+                        <span class="material-symbols-outlined text-slate-300">more_vert</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar Widgets -->
+        <div class="lg:col-span-4 space-y-6">
+            <!-- Flight Status -->
+            <div class="bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-sm">
+                <h3 class="font-headline-sm text-headline-sm text-on-surface mb-6">Live Flight Status</h3>
+                <div class="space-y-6">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center text-primary">
+                                <span class="material-symbols-outlined text-sm">flight</span>
+                            </div>
+                            <span class="font-bold text-sm text-on-surface">SR-102</span>
+                        </div>
+                        <span class="text-[10px] font-black text-green-600 bg-green-100 px-2 py-0.5 rounded">ON TIME</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center text-primary">
+                                <span class="material-symbols-outlined text-sm">flight</span>
+                            </div>
+                            <span class="font-bold text-sm text-on-surface">SR-445</span>
+                        </div>
+                        <span class="text-[10px] font-black text-amber-600 bg-amber-100 px-2 py-0.5 rounded">DELAYED</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center text-primary">
+                                <span class="material-symbols-outlined text-sm">flight</span>
+                            </div>
+                            <span class="font-bold text-sm text-on-surface">SR-901</span>
+                        </div>
+                        <span class="text-[10px] font-black text-slate-400 bg-slate-100 px-2 py-0.5 rounded">LANDED</span>
+                    </div>
+                </div>
+                <button class="w-full mt-8 py-3 bg-primary/5 text-primary rounded-xl text-xs font-bold hover:bg-primary/10 transition-all">
+                    View Fleet Map
+                </button>
+            </div>
+
+            <!-- System Health -->
+            <div class="bg-primary-container p-8 rounded-[2.5rem] text-on-primary">
+                <h3 class="font-headline-sm text-headline-sm mb-6">System Health</h3>
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between text-xs font-bold mb-2">
+                            <span>Server Load</span>
+                            <span>24%</span>
+                        </div>
+                        <div class="w-full bg-white/20 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-white h-full" style="width: 24%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-bold mb-2">
+                            <span>API Uptime</span>
+                            <span>99.9%</span>
+                        </div>
+                        <div class="w-full bg-white/20 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-white h-full" style="width: 99.9%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

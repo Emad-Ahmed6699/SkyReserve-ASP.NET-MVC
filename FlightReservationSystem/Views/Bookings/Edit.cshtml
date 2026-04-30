@@ -1,0 +1,94 @@
+@model FlightReservationSystem.Models.Booking
+
+@{
+    ViewData["Title"] = "Edit Booking";
+}
+
+<div class="max-w-[1280px] mx-auto px-8 py-12">
+    <div class="flex items-center gap-4 mb-8">
+        <a asp-action="Index" class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container text-primary hover:bg-primary hover:text-on-primary transition-all shadow-sm">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+        <h1 class="font-headline-lg text-headline-lg text-on-surface">Edit Booking: <span class="text-primary">#@Model.Id</span></h1>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Main Form -->
+        <div class="lg:col-span-2">
+            <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="p-8">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="bg-error/10 text-error p-4 rounded-xl mb-6 text-sm"></div>
+                        <input type="hidden" asp-for="Id" />
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2 md:col-span-2">
+                                <label asp-for="FlightId" class="font-label-md text-on-surface-variant flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm text-primary">flight_takeoff</span> Assigned Flight
+                                </label>
+                                <select asp-for="FlightId" class="w-full bg-slate-50 border-none rounded-xl p-4 focus:ring-2 focus:ring-primary focus:bg-white transition-all appearance-none cursor-pointer" asp-items="ViewBag.FlightId"></select>
+                                <span asp-validation-for="FlightId" class="text-xs text-error"></span>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label asp-for="PassengerId" class="font-label-md text-on-surface-variant flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm text-primary">person</span> Passenger
+                                </label>
+                                <select asp-for="PassengerId" class="w-full bg-slate-50 border-none rounded-xl p-4 focus:ring-2 focus:ring-primary focus:bg-white transition-all appearance-none cursor-pointer" asp-items="ViewBag.PassengerId"></select>
+                                <span asp-validation-for="PassengerId" class="text-xs text-error"></span>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label asp-for="SeatNumber" class="font-label-md text-on-surface-variant flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm text-primary">chair</span> Seat Assignment
+                                </label>
+                                <input asp-for="SeatNumber" class="w-full bg-slate-50 border-none rounded-xl p-4 focus:ring-2 focus:ring-primary focus:bg-white transition-all" />
+                                <span asp-validation-for="SeatNumber" class="text-xs text-error"></span>
+                            </div>
+                        </div>
+
+                        <div class="mt-10 flex gap-4">
+                            <button type="submit" class="bg-primary text-on-primary px-8 py-4 rounded-xl font-headline-md flex items-center gap-2 hover:bg-primary/90 transition-all active:scale-95 shadow-lg">
+                                <span class="material-symbols-outlined">save</span> Update Booking
+                            </button>
+                            <a asp-action="Index" class="border border-outline text-on-surface-variant px-8 py-4 rounded-xl font-headline-md bg-white hover:bg-slate-50 transition-all active:scale-95">
+                                Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar Info -->
+        <div class="space-y-6">
+            <div class="bg-surface-container p-8 rounded-3xl border border-slate-200">
+                <h3 class="font-headline-sm text-headline-sm text-on-surface mb-6">Modification Notice</h3>
+                <p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+                    Changes to flight or seat assignments may affect the final fare. Ensure the passenger is notified of any itinerary updates immediately.
+                </p>
+                <div class="p-4 bg-white rounded-2xl border border-slate-100 flex items-center gap-4">
+                    <div class="w-10 h-10 bg-primary/5 text-primary rounded-xl flex items-center justify-center">
+                        <span class="material-symbols-outlined">history</span>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-400 uppercase font-bold tracking-widest">Last Update</div>
+                        <div class="text-sm font-bold text-on-surface">@DateTime.Now.ToString("MMM dd, yyyy")</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-error/5 p-8 rounded-3xl border border-error/20">
+                <h3 class="font-headline-sm text-headline-sm text-error mb-2">Cancel Booking</h3>
+                <p class="text-sm text-on-surface-variant mb-6">This will release the assigned seat and remove the passenger from the flight manifest.</p>
+                <a asp-action="Delete" asp-route-id="@Model.Id" class="w-full inline-flex justify-center py-3 bg-white border border-error rounded-xl text-sm font-bold text-error hover:bg-error hover:text-white transition-all">
+                    Cancel Booking
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

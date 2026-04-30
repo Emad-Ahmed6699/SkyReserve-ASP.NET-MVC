@@ -1,0 +1,164 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- Hero Section -->
+<section class="relative h-[819px] flex items-center justify-center overflow-hidden bg-gradient-to-b from-surface-container-low to-background">
+    <!-- Animated Plane Container -->
+    <div class="absolute inset-0 pointer-events-none z-10">
+        <div class="animate-plane absolute top-1/2 left-0 text-primary/20">
+            <span class="material-symbols-outlined !text-[120px]">flight</span>
+        </div>
+    </div>
+    <div class="max-w-[1280px] mx-auto px-8 w-full relative z-20 flex flex-col md:flex-row items-center gap-12">
+        <div class="flex-1 space-y-6">
+            <h1 class="font-display text-display text-on-surface leading-tight">
+                Book Your <span class="text-primary-container">Dream Flight</span>
+            </h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                Experience the ultimate in travel efficiency and serenity. SkyReserve connects you to over 500 global destinations with atmospheric clarity.
+            </p>
+            <div class="flex gap-4">
+                <button class="bg-primary-container text-on-primary px-8 py-4 rounded-xl font-headline-md shadow-lg hover:shadow-xl transition-all active:scale-95">
+                    Search Flights
+                </button>
+                <button class="border border-outline text-primary px-8 py-4 rounded-xl font-headline-md bg-white/50 hover:bg-white transition-all active:scale-95">
+                    View Deals
+                </button>
+            </div>
+        </div>
+        <div class="flex-1 relative hidden lg:block">
+            <div class="aspect-square rounded-full bg-primary/5 absolute -top-12 -right-12 w-full h-full animate-pulse"></div>
+            <img class="relative z-30 w-full h-auto rounded-3xl shadow-2xl border-4 border-white object-cover aspect-[4/3]" src="https://images.unsplash.com/photo-1436491865332-7a61a109c0f2?q=80&w=1200" alt="SkyReserve Flight" />
+        </div>
+    </div>
+</section>
+
+<!-- Search Widget / Cards Section (Bento Grid) -->
+<section class="max-w-[1280px] mx-auto px-8 -mt-24 relative z-40 mb-24">
+    <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-200">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="space-y-2">
+                <label class="font-label-md text-on-surface-variant flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">flight_takeoff</span> FROM
+                </label>
+                <input class="w-full bg-slate-50 border-none rounded-xl p-4 focus:ring-2 focus:ring-primary focus:bg-white transition-all" placeholder="London, LHR" type="text" />
+            </div>
+            <div class="space-y-2">
+                <label class="font-label-md text-on-surface-variant flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">flight_land</span> TO
+                </label>
+                <input class="w-full bg-slate-50 border-none rounded-xl p-4 focus:ring-2 focus:ring-primary focus:bg-white transition-all" placeholder="New York, JFK" type="text" />
+            </div>
+            <div class="space-y-2">
+                <label class="font-label-md text-on-surface-variant flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">calendar_today</span> DEPARTURE
+                </label>
+                <input class="w-full bg-slate-50 border-none rounded-xl p-4 focus:ring-2 focus:ring-primary focus:bg-white transition-all" type="date" />
+            </div>
+            <div class="flex items-end">
+                <button class="w-full bg-primary text-on-primary rounded-xl h-[56px] font-headline-md flex items-center justify-center gap-2 hover:bg-primary/90 transition-all active:scale-95">
+                    <span class="material-symbols-outlined">search</span> Search
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bento Grid Content -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mt-16">
+        <div class="md:col-span-8 bg-white p-10 rounded-3xl border border-slate-100 shadow-sm flex flex-col justify-between min-h-[400px]">
+            <div>
+                <div class="flex gap-2 mb-4">
+                    <span class="bg-surface-container text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Premium Service</span>
+                </div>
+                <h2 class="font-headline-lg text-headline-lg mb-4">Fly with Unmatched Comfort</h2>
+                <p class="text-on-surface-variant max-w-lg">Our newly updated fleet features lie-flat seats and curated dining experiences that make long-haul flights feel like a stay at a five-star hotel.</p>
+            </div>
+            <div class="mt-8">
+                <button class="flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all">
+                    Learn more about our fleet <span class="material-symbols-outlined">arrow_forward</span>
+                </button>
+            </div>
+        </div>
+        <div class="md:col-span-4 grid grid-rows-2 gap-6">
+            <div class="bg-primary-container p-8 rounded-3xl text-on-primary flex flex-col justify-between">
+                <span class="material-symbols-outlined !text-4xl">loyalty</span>
+                <div>
+                    <h3 class="font-headline-md text-headline-md mb-2">SkyPoints</h3>
+                    <p class="text-sm opacity-90">Earn 5x points on every booking with our flagship loyalty program.</p>
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm flex flex-col justify-between">
+                <span class="material-symbols-outlined text-primary !text-4xl">support_agent</span>
+                <div>
+                    <h3 class="font-headline-md text-headline-md mb-2">24/7 Support</h3>
+                    <p class="text-sm text-on-surface-variant">Our concierge team is always available for your needs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Destinations -->
+<section class="max-w-[1280px] mx-auto px-8 mb-24">
+    <div class="flex justify-between items-end mb-12">
+        <div>
+            <h2 class="font-headline-lg text-headline-lg mb-2">Popular Destinations</h2>
+            <p class="text-on-surface-variant">Curated escapes for the modern traveler.</p>
+        </div>
+        <button class="text-primary font-bold">View all destinations</button>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Card 1 -->
+        <div class="group cursor-pointer overflow-hidden rounded-3xl border border-slate-200 bg-white transition-all hover:shadow-lg">
+            <div class="h-64 overflow-hidden">
+                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=80&w=800" alt="Sydney" />
+            </div>
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="font-headline-md text-headline-md">Sydney, Australia</h4>
+                    <span class="text-primary font-bold text-lg">$1,240</span>
+                </div>
+                <p class="text-on-surface-variant text-sm mb-4">The ultimate harbor-side escape featuring iconic landmarks.</p>
+                <div class="flex gap-2">
+                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs">Direct</span>
+                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs">Free WiFi</span>
+                </div>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="group cursor-pointer overflow-hidden rounded-3xl border border-slate-200 bg-white transition-all hover:shadow-lg">
+            <div class="h-64 overflow-hidden">
+                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=800" alt="Kyoto" />
+            </div>
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="font-headline-md text-headline-md">Kyoto, Japan</h4>
+                    <span class="text-primary font-bold text-lg">$980</span>
+                </div>
+                <p class="text-on-surface-variant text-sm mb-4">Discover ancient traditions and tranquil landscapes.</p>
+                <div class="flex gap-2">
+                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs">1 Stop</span>
+                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs">Cultural Tour</span>
+                </div>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="group cursor-pointer overflow-hidden rounded-3xl border border-slate-200 bg-white transition-all hover:shadow-lg">
+            <div class="h-64 overflow-hidden">
+                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=800" alt="London" />
+            </div>
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="font-headline-md text-headline-md">London, UK</h4>
+                    <span class="text-primary font-bold text-lg">$650</span>
+                </div>
+                <p class="text-on-surface-variant text-sm mb-4">Modern energy meets historic grandeur in the heart of Europe.</p>
+                <div class="flex gap-2">
+                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs">Direct</span>
+                    <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs">Night Flight</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

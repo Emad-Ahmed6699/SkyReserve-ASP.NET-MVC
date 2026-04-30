@@ -1,0 +1,89 @@
+@model FlightReservationSystem.Models.Passenger
+
+@{
+    ViewData["Title"] = "Register Passenger";
+}
+
+<div class="max-w-[1280px] mx-auto px-8 py-12">
+    <div class="flex items-center gap-4 mb-8">
+        <a asp-action="Index" class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container text-primary hover:bg-primary hover:text-on-primary transition-all shadow-sm">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+        <h1 class="font-headline-lg text-headline-lg text-on-surface">Register New Passenger</h1>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Main Form -->
+        <div class="lg:col-span-2">
+            <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="p-8">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="bg-error/10 text-error p-4 rounded-xl mb-6 text-sm"></div>
+                        
+                        <div class="space-y-6">
+                            <div class="space-y-2">
+                                <label asp-for="FullName" class="font-label-md text-on-surface-variant flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm text-primary">person</span> Full Name
+                                </label>
+                                <input asp-for="FullName" class="w-full bg-slate-50 border-none rounded-xl p-4 focus:ring-2 focus:ring-primary focus:bg-white transition-all" placeholder="Enter passenger's full legal name" />
+                                <span asp-validation-for="FullName" class="text-xs text-error"></span>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label asp-for="PassportNumber" class="font-label-md text-on-surface-variant flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm text-primary">badge</span> Passport Number
+                                </label>
+                                <input asp-for="PassportNumber" class="w-full bg-slate-50 border-none rounded-xl p-4 focus:ring-2 focus:ring-primary focus:bg-white transition-all" placeholder="e.g. A12345678" />
+                                <span asp-validation-for="PassportNumber" class="text-xs text-error"></span>
+                            </div>
+                        </div>
+
+                        <div class="mt-10 flex gap-4">
+                            <button type="submit" class="bg-primary text-on-primary px-8 py-4 rounded-xl font-headline-md flex items-center gap-2 hover:bg-primary/90 transition-all active:scale-95 shadow-lg">
+                                <span class="material-symbols-outlined">person_add</span> Register Passenger
+                            </button>
+                            <a asp-action="Index" class="border border-outline text-on-surface-variant px-8 py-4 rounded-xl font-headline-md bg-white hover:bg-slate-50 transition-all active:scale-95">
+                                Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar Info -->
+        <div class="space-y-6">
+            <div class="bg-primary-container p-8 rounded-3xl text-on-primary">
+                <span class="material-symbols-outlined !text-4xl mb-4">security</span>
+                <h3 class="font-headline-md text-headline-md mb-2">Security Verification</h3>
+                <p class="text-sm opacity-90 leading-relaxed">
+                    All passenger information must match their official travel documents exactly. Discrepancies may lead to boarding delays or cancellations.
+                </p>
+            </div>
+            
+            <div class="bg-surface-container p-8 rounded-3xl border border-slate-200">
+                <h3 class="font-headline-sm text-headline-sm text-on-surface mb-4">Passenger Profile</h3>
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center text-slate-300">
+                        <span class="material-symbols-outlined !text-4xl">account_circle</span>
+                    </div>
+                    <div class="text-sm text-on-surface-variant italic">
+                        Avatar will be generated upon registration
+                    </div>
+                </div>
+                <ul class="space-y-3">
+                    <li class="flex items-center gap-2 text-sm text-on-surface-variant">
+                        <span class="material-symbols-outlined text-xs text-primary">check_circle</span> Frequent Flyer Eligible
+                    </li>
+                    <li class="flex items-center gap-2 text-sm text-on-surface-variant">
+                        <span class="material-symbols-outlined text-xs text-primary">check_circle</span> Global Entry Ready
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
