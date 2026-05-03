@@ -178,12 +178,32 @@
                 </a>
                 <div class="hidden md:flex items-center gap-8">
                     <a class="text-slate-600 hover:text-primary transition-colors py-2 @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "Index" ? "text-primary font-semibold border-b-2 border-primary" : "")" asp-controller="Home" asp-action="Index">Home</a>
-                    <a class="text-slate-600 hover:text-primary transition-colors py-2 @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Flights" ? "text-primary font-semibold border-b-2 border-primary" : "")" asp-controller="Flights" asp-action="Index">Flights</a>
-                    <a class="text-slate-600 hover:text-primary transition-colors py-2 @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Bookings" ? "text-primary font-semibold border-b-2 border-primary" : "")" asp-controller="Bookings" asp-action="Index">Bookings</a>
-                    <a class="text-slate-600 hover:text-primary transition-colors py-2 @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Passengers" ? "text-primary font-semibold border-b-2 border-primary" : "")" asp-controller="Passengers" asp-action="Index">Passengers</a>
+                    
+                    @if (Context.Session.GetString("UserName") != null)
+                    {
+                        <a class="text-slate-600 hover:text-primary transition-colors py-2 @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Flights" ? "text-primary font-semibold border-b-2 border-primary" : "")" asp-controller="Flights" asp-action="Index">Flights</a>
+                        <a class="text-slate-600 hover:text-primary transition-colors py-2 @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Bookings" ? "text-primary font-semibold border-b-2 border-primary" : "")" asp-controller="Bookings" asp-action="Index">Bookings</a>
+                        <a class="text-slate-600 hover:text-primary transition-colors py-2 @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Passengers" ? "text-primary font-semibold border-b-2 border-primary" : "")" asp-controller="Passengers" asp-action="Index">Passengers</a>
+                    }
                 </div>
             </div>
-            
+
+            <div class="flex items-center gap-4">
+                @if (Context.Session.GetString("UserName") != null)
+                {
+                    <span class="text-slate-600 font-medium hidden lg:inline">Welcome, @Context.Session.GetString("UserName")</span>
+                    <a asp-controller="Account" asp-action="Logout" class="btn-premium !bg-error !shadow-error/20">
+                        <span class="material-symbols-outlined">logout</span> Logout
+                    </a>
+                }
+                else
+                {
+                    <a asp-controller="Account" asp-action="Login" class="text-slate-600 hover:text-primary font-semibold transition-colors">Login</a>
+                    <a asp-controller="Account" asp-action="SignUp" class="btn-premium">
+                        <span class="material-symbols-outlined">person_add</span> Sign Up
+                    </a>
+                }
+            </div>
         </div>
     </nav>
 
