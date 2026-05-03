@@ -41,6 +41,7 @@ namespace FlightReservationSystem.Controllers
             return View(user);
         }
 
+
         [HttpGet]
         public IActionResult Login()
         {
