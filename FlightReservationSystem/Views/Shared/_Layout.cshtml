@@ -169,7 +169,7 @@
 </head>
 <body class="bg-background text-on-surface font-body overflow-x-hidden min-h-screen flex flex-col">
     <!-- TopNavBar -->
-    <nav class="bg-white/90 backdrop-blur-md fixed top-0 w-full z-50 border-b border-slate-200 shadow-sm antialiased">
+    <nav class="bg-white/80 backdrop-blur-xl fixed top-0 w-full z-[100] border-b border-slate-200 shadow-sm antialiased transition-all duration-300">
         <div class="max-w-[1280px] mx-auto px-8 flex justify-between items-center h-16">
             <div class="flex items-center gap-12">
                 <a class="text-2xl font-bold tracking-tight text-primary flex items-center gap-2" asp-controller="Home" asp-action="Index">
@@ -191,16 +191,21 @@
             <div class="flex items-center gap-4">
                 @if (Context.Session.GetString("UserName") != null)
                 {
-                    <span class="text-slate-600 font-medium hidden lg:inline">Welcome, @Context.Session.GetString("UserName")</span>
-                    <a asp-controller="Account" asp-action="Logout" class="btn-premium !bg-error !shadow-error/20">
-                        <span class="material-symbols-outlined">logout</span> Logout
-                    </a>
+                    <div class="flex items-center gap-6">
+                        <div class="flex flex-col items-end hidden lg:flex">
+                            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Authenticated</span>
+                            <span class="text-slate-900 font-bold">@Context.Session.GetString("UserName")</span>
+                        </div>
+                        <a asp-controller="Account" asp-action="Logout" class="px-6 py-2.5 bg-red-50 text-red-600 rounded-xl font-bold hover:bg-red-600 hover:text-white transition-all flex items-center gap-2 border border-red-100">
+                            <span class="material-symbols-outlined text-xl">logout</span> Logout
+                        </a>
+                    </div>
                 }
                 else
                 {
-                    <a asp-controller="Account" asp-action="Login" class="text-slate-600 hover:text-primary font-semibold transition-colors">Login</a>
-                    <a asp-controller="Account" asp-action="SignUp" class="btn-premium">
-                        <span class="material-symbols-outlined">person_add</span> Sign Up
+                    <a asp-controller="Account" asp-action="Login" class="text-slate-600 hover:text-primary font-bold transition-colors px-4">Login</a>
+                    <a asp-controller="Account" asp-action="SignUp" class="px-8 py-3 bg-primary text-white rounded-2xl font-black shadow-lg shadow-primary/20 hover:bg-blue-600 hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
+                        <span class="material-symbols-outlined text-xl">person_add</span> Register
                     </a>
                 }
             </div>
