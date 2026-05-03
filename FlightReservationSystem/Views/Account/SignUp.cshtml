@@ -4,86 +4,131 @@
     ViewData["Title"] = "Register - SkyReserve";
 }
 
-<div class="min-h-[calc(100vh-64px)] flex items-center justify-center relative overflow-hidden bg-[#050b14] py-24">
-    <!-- Premium Background -->
+<div class="min-h-[calc(100vh-64px)] flex items-center justify-center relative overflow-hidden bg-[#050b14] py-12 md:py-24">
+    <!-- Background Layers -->
     <div class="absolute inset-0 z-0">
-        <div class="absolute inset-0 bg-gradient-to-tr from-primary/40 via-[#050b14]/80 to-[#050b14] z-10"></div>
-        <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-50 scale-105 animate-slow-pan" 
+        <div class="absolute inset-0 bg-gradient-to-tr from-primary/30 via-[#050b14] to-black z-10"></div>
+        <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-30 scale-105 animate-slow-pan" 
              style="background-image: url('https://images.unsplash.com/photo-1517976487492-5750f3195933?q=80&w=2000');"></div>
     </div>
 
-    <!-- Decorative Elements -->
-    <div class="absolute top-1/4 -right-20 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-pulse"></div>
-    <div class="absolute bottom-1/4 -left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse" style="animation-delay: 1.5s"></div>
-
-    <div class="relative z-20 w-full max-w-[540px] px-6">
-        <div class="glass-card p-10 md:p-14 border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] bg-white/5 backdrop-blur-3xl rounded-[3rem] transition-all duration-500 hover:border-white/20">
-            <div class="text-center mb-12">
-                <div class="w-20 h-20 bg-gradient-to-br from-emerald-500/20 to-teal-400/20 text-emerald-400 rounded-3xl flex items-center justify-center mx-auto mb-6 border border-white/10 shadow-inner transition-transform duration-500 hover:-rotate-12">
-                    <span class="material-symbols-outlined !text-4xl">person_add</span>
+    <!-- Main Container -->
+    <div class="relative z-20 w-full max-w-[1100px] px-6">
+        <div class="flex flex-col md:flex-row overflow-hidden glass-card border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.8)] bg-[#0a1526]/80 backdrop-blur-3xl rounded-[3rem] transition-all duration-500 hover:border-primary/30">
+            
+            <!-- Left Side: Visual/Branding -->
+            <div class="hidden md:flex md:w-5/12 bg-gradient-to-tr from-emerald-900/30 to-blue-900/40 p-12 flex-col justify-between border-r border-white/10 relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 pointer-events-none">
+                    <div class="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_30%,#10b981_0%,transparent_70%)]"></div>
                 </div>
-                <h2 class="text-4xl font-black text-white tracking-tighter mb-3">Join the Elite</h2>
-                <p class="text-slate-400 font-medium text-sm tracking-wide">Register to access premium flight services.</p>
+                
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span class="material-symbols-outlined text-emerald-400 text-4xl">rocket_launch</span>
+                        <h1 class="text-2xl font-black text-white tracking-tighter">SkyReserve</h1>
+                    </div>
+                    <h2 class="text-3xl font-black text-white leading-tight mb-4">Start Your Global Journey Today.</h2>
+                    <p class="text-slate-300 font-medium leading-relaxed">Create your account and gain instant access to our premium fleet management system.</p>
+                </div>
+
+                <div class="relative z-10 mt-auto">
+                    <div class="p-6 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10">
+                        <p class="text-emerald-400 text-xs font-black uppercase tracking-widest mb-2">Network Status</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]"></div>
+                            <span class="text-sm font-bold text-slate-200">System Fully Operational</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <form asp-action="SignUp" method="post" class="space-y-7">
-                <div asp-validation-summary="ModelOnly" class="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-2xl flex items-center gap-3 text-red-400 text-xs font-bold"></div>
-                
-                <div class="space-y-3 group">
-                    <label asp-for="Username" class="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] flex items-center gap-2 px-1 transition-colors group-focus-within:text-primary">
-                        <span class="material-symbols-outlined text-sm">badge</span> Chosen Callsign
-                    </label>
-                    <input asp-for="Username" 
-                           class="w-full bg-white/10 border border-white/5 rounded-2xl p-5 text-white placeholder-slate-500 focus:ring-4 focus:ring-primary/20 focus:bg-white/15 focus:border-primary/50 transition-all outline-none font-medium" 
-                           placeholder="Ex: Maverick_24" />
-                    <span asp-validation-for="Username" class="text-red-400 text-[10px] font-black px-1"></span>
+            <!-- Right Side: Form -->
+            <div class="w-full md:w-7/12 p-8 md:p-14 lg:p-16">
+                <div class="mb-10 text-center md:text-left">
+                    <div class="inline-flex items-center justify-center w-14 h-14 bg-emerald-500/10 text-emerald-400 rounded-2xl mb-6 border border-emerald-500/20">
+                        <span class="material-symbols-outlined !text-3xl">person_add</span>
+                    </div>
+                    <h3 class="text-3xl font-black text-white tracking-tight mb-2">Create Account</h3>
+                    <p class="text-slate-400 font-medium text-sm">Join our network of elite travelers and managers.</p>
                 </div>
 
-                <div class="space-y-3 group">
-                    <label asp-for="Email" class="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] flex items-center gap-2 px-1 transition-colors group-focus-within:text-primary">
-                        <span class="material-symbols-outlined text-sm">mail</span> Digital Identity
-                    </label>
-                    <input asp-for="Email" 
-                           class="w-full bg-white/10 border border-white/5 rounded-2xl p-5 text-white placeholder-slate-500 focus:ring-4 focus:ring-primary/20 focus:bg-white/15 focus:border-primary/50 transition-all outline-none font-medium" 
-                           placeholder="name@skyreserve.com" />
-                    <span asp-validation-for="Email" class="text-red-400 text-[10px] font-black px-1"></span>
-                </div>
+                <form asp-action="SignUp" method="post" class="space-y-6">
+                    <div asp-validation-summary="ModelOnly" class="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-2xl flex items-center gap-3 text-red-400 text-xs font-bold animate-shake"></div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2 group">
+                            <label asp-for="Username" class="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] flex items-center gap-2 px-1 group-focus-within:text-emerald-400 transition-colors">
+                                <span class="material-symbols-outlined text-sm">badge</span> Callsign
+                            </label>
+                            <input asp-for="Username" 
+                                   class="premium-input w-full bg-[#050b14]/50 border border-white/10 rounded-2xl p-4 text-white placeholder-slate-600 focus:ring-4 focus:ring-emerald-500/20 focus:bg-[#050b14]/80 focus:border-emerald-500/50 transition-all outline-none font-bold" 
+                                   placeholder="Maverick_24" />
+                            <span asp-validation-for="Username" class="text-red-400 text-[10px] font-black px-1"></span>
+                        </div>
 
-                <div class="space-y-3 group">
-                    <label asp-for="Password" class="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] flex items-center gap-2 px-1 transition-colors group-focus-within:text-primary">
-                        <span class="material-symbols-outlined text-sm">security</span> Security Protocol
-                    </label>
-                    <input asp-for="Password" type="password" 
-                           class="w-full bg-white/10 border border-white/5 rounded-2xl p-5 text-white placeholder-slate-500 focus:ring-4 focus:ring-primary/20 focus:bg-white/15 focus:border-primary/50 transition-all outline-none font-medium" 
-                           placeholder="••••••••" />
-                    <span asp-validation-for="Password" class="text-red-400 text-[10px] font-black px-1"></span>
-                </div>
+                        <div class="space-y-2 group">
+                            <label asp-for="Email" class="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] flex items-center gap-2 px-1 group-focus-within:text-emerald-400 transition-colors">
+                                <span class="material-symbols-outlined text-sm">mail</span> Identity
+                            </label>
+                            <input asp-for="Email" 
+                                   class="premium-input w-full bg-[#050b14]/50 border border-white/10 rounded-2xl p-4 text-white placeholder-slate-600 focus:ring-4 focus:ring-emerald-500/20 focus:bg-[#050b14]/80 focus:border-emerald-500/50 transition-all outline-none font-bold" 
+                                   placeholder="pilot@skyreserve.com" />
+                            <span asp-validation-for="Email" class="text-red-400 text-[10px] font-black px-1"></span>
+                        </div>
+                    </div>
 
-                <div class="pt-6">
-                    <button type="submit" class="w-full py-6 bg-primary text-white rounded-[1.5rem] font-black shadow-2xl shadow-primary/30 hover:bg-blue-600 hover:shadow-primary/40 hover:-translate-y-1 active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-4 group">
-                        Confirm Registration
-                        <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform duration-300">rocket_launch</span>
-                    </button>
-                </div>
+                    <div class="space-y-2 group">
+                        <label asp-for="Password" class="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] flex items-center gap-2 px-1 group-focus-within:text-emerald-400 transition-colors">
+                            <span class="material-symbols-outlined text-sm">security</span> Security Token
+                        </label>
+                        <input asp-for="Password" type="password" 
+                               class="premium-input w-full bg-[#050b14]/50 border border-white/10 rounded-2xl p-4 md:p-5 text-white placeholder-slate-600 focus:ring-4 focus:ring-emerald-500/20 focus:bg-[#050b14]/80 focus:border-emerald-500/50 transition-all outline-none font-bold" 
+                               placeholder="••••••••" />
+                        <span asp-validation-for="Password" class="text-red-400 text-[10px] font-black px-1"></span>
+                    </div>
 
-                <div class="text-center pt-8 border-t border-white/5 mt-4">
-                    <p class="text-slate-400 text-sm font-bold">
-                        Already in the system? 
-                        <a asp-action="Login" class="text-white hover:text-primary transition-colors underline underline-offset-8 decoration-primary/40 hover:decoration-primary">Secure Login</a>
-                    </p>
-                </div>
-            </form>
+                    <div class="pt-6">
+                        <button type="submit" class="w-full py-5 bg-emerald-600 text-white rounded-[1.25rem] font-black shadow-xl shadow-emerald-900/30 hover:bg-emerald-500 hover:shadow-emerald-500/40 hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-4 group">
+                            Initialize Account
+                            <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform duration-300">rocket_launch</span>
+                        </button>
+                    </div>
+
+                    <div class="text-center pt-8 border-t border-white/5 mt-4">
+                        <p class="text-slate-400 text-xs font-bold">
+                            Already registered? 
+                            <a asp-action="Login" class="text-white hover:text-emerald-400 transition-colors font-black ml-1 underline underline-offset-4 decoration-emerald-500/30">Secure Login</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
 
 <style>
+    .premium-input:-webkit-autofill,
+    .premium-input:-webkit-autofill:hover, 
+    .premium-input:-webkit-autofill:focus {
+        -webkit-text-fill-color: white !important;
+        -webkit-box-shadow: 0 0 0px 1000px #0a1526 inset !important;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+
     @@keyframes slow-pan {
         0% { transform: scale(1.05) translateY(0); }
         100% { transform: scale(1.1) translateY(-2%); }
     }
     .animate-slow-pan {
         animation: slow-pan 25s ease-in-out infinite alternate;
+    }
+    @@keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-8px); }
+        75% { transform: translateX(8px); }
+    }
+    .animate-shake {
+        animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
     }
 </style>
 

@@ -2,85 +2,123 @@
     ViewData["Title"] = "Login - SkyReserve";
 }
 
-<div class="min-h-[calc(100vh-64px)] flex items-center justify-center relative overflow-hidden bg-[#050b14] py-20">
-    <!-- Premium Background -->
+<div class="min-h-[calc(100vh-64px)] flex items-center justify-center relative overflow-hidden bg-[#050b14] py-12 md:py-20">
+    <!-- Background Layers -->
     <div class="absolute inset-0 z-0">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/40 via-[#050b14]/80 to-[#050b14] z-10"></div>
-        <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-50 scale-105 animate-slow-pan" 
-             style="background-image: url('https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=2000');"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/30 via-[#050b14] to-black z-10"></div>
+        <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-30 scale-105 animate-slow-pan" 
+             style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109c0f2?q=80&w=2000');"></div>
     </div>
 
-    <!-- Decorative Elements -->
-    <div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-pulse"></div>
-    <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse" style="animation-delay: 2s"></div>
-
-    <div class="relative z-20 w-full max-w-[460px] px-6">
-        <div class="glass-card p-10 md:p-14 border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] bg-white/5 backdrop-blur-3xl rounded-[3rem] transition-all duration-500 hover:border-white/20">
-            <div class="text-center mb-12">
-                <div class="w-20 h-20 bg-gradient-to-tr from-primary/20 to-blue-400/20 text-primary-container rounded-3xl flex items-center justify-center mx-auto mb-6 border border-white/10 shadow-inner group transition-transform duration-500 hover:rotate-12">
-                    <span class="material-symbols-outlined !text-4xl text-primary-container">encrypted</span>
+    <!-- Main Container -->
+    <div class="relative z-20 w-full max-w-[1000px] px-6">
+        <div class="flex flex-col md:flex-row overflow-hidden glass-card border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.8)] bg-[#0a1526]/80 backdrop-blur-3xl rounded-[3rem] transition-all duration-500 hover:border-primary/30">
+            
+            <!-- Left Side: Visual/Branding -->
+            <div class="hidden md:flex md:w-5/12 bg-gradient-to-br from-primary/20 to-blue-900/40 p-12 flex-col justify-between border-r border-white/10 relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 pointer-events-none">
+                    <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,#3b82f6_0%,transparent_70%)]"></div>
                 </div>
-                <h2 class="text-4xl font-black text-white tracking-tighter mb-3">Welcome Back</h2>
-                <p class="text-slate-400 font-medium text-sm tracking-wide">Enter your credentials to access the fleet.</p>
+                
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span class="material-symbols-outlined text-primary text-4xl">flight_takeoff</span>
+                        <h1 class="text-2xl font-black text-white tracking-tighter">SkyReserve</h1>
+                    </div>
+                    <h2 class="text-3xl font-black text-white leading-tight mb-4">Elevate Your Travel Experience.</h2>
+                    <p class="text-slate-300 font-medium leading-relaxed">Securely access the world's most advanced flight reservation network.</p>
+                </div>
+
+                <div class="relative z-10 mt-auto">
+                    <div class="flex items-center gap-4 text-slate-400">
+                        <div class="flex -space-x-3">
+                            <img src="https://i.pravatar.cc/100?u=1" class="w-8 h-8 rounded-full border-2 border-[#0a1526]" alt="User" />
+                            <img src="https://i.pravatar.cc/100?u=2" class="w-8 h-8 rounded-full border-2 border-[#0a1526]" alt="User" />
+                            <img src="https://i.pravatar.cc/100?u=3" class="w-8 h-8 rounded-full border-2 border-[#0a1526]" alt="User" />
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-widest">+2.4k Active Pilots</span>
+                    </div>
+                </div>
             </div>
 
-            @if (ViewBag.Error != null)
-            {
-                <div class="mb-8 p-5 bg-red-500/10 border border-red-500/20 rounded-2xl flex items-center gap-4 text-red-400 text-sm animate-shake">
-                    <span class="material-symbols-outlined text-2xl">warning</span>
-                    <span class="font-bold">@ViewBag.Error</span>
-                </div>
-            }
-
-            <form asp-action="Login" method="post" class="space-y-8">
-                <div class="space-y-3 group">
-                    <label for="email" class="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] flex items-center gap-2 px-1 transition-colors group-focus-within:text-primary">
-                        <span class="material-symbols-outlined text-sm">alternate_email</span> Email Identity
-                    </label>
-                    <input type="email" name="email" id="email" 
-                           class="w-full bg-white/10 border border-white/5 rounded-2xl p-5 text-white placeholder-slate-500 focus:ring-4 focus:ring-primary/20 focus:bg-white/15 focus:border-primary/50 transition-all outline-none font-medium" 
-                           placeholder="name@skyreserve.com" required />
+            <!-- Right Side: Form -->
+            <div class="w-full md:w-7/12 p-8 md:p-14 lg:p-16">
+                <div class="mb-10">
+                    <div class="inline-flex items-center justify-center w-14 h-14 bg-primary/10 text-primary rounded-2xl mb-6 border border-primary/20">
+                        <span class="material-symbols-outlined !text-3xl">login</span>
+                    </div>
+                    <h3 class="text-3xl font-black text-white tracking-tight mb-2">Secure Login</h3>
+                    <p class="text-slate-400 font-medium text-sm">Welcome back! Please enter your digital identity.</p>
                 </div>
 
-                <div class="space-y-3 group">
-                    <label for="password" class="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] flex items-center gap-2 px-1 transition-colors group-focus-within:text-primary">
-                        <span class="material-symbols-outlined text-sm">vpn_key</span> Access Token
-                    </label>
-                    <input type="password" name="password" id="password" 
-                           class="w-full bg-white/10 border border-white/5 rounded-2xl p-5 text-white placeholder-slate-500 focus:ring-4 focus:ring-primary/20 focus:bg-white/15 focus:border-primary/50 transition-all outline-none font-medium" 
-                           placeholder="••••••••" required />
-                </div>
+                @if (ViewBag.Error != null)
+                {
+                    <div class="mb-8 p-5 bg-red-500/10 border border-red-500/20 rounded-2xl flex items-center gap-4 text-red-400 text-sm animate-shake">
+                        <span class="material-symbols-outlined text-2xl">warning</span>
+                        <span class="font-bold">@ViewBag.Error</span>
+                    </div>
+                }
 
-                <div class="flex items-center justify-between px-2">
-                    <label class="flex items-center gap-3 cursor-pointer group/check">
-                        <div class="relative flex items-center">
-                            <input type="checkbox" id="remember" class="peer appearance-none w-6 h-6 border-2 border-white/10 rounded-lg checked:bg-primary checked:border-primary transition-all cursor-pointer hover:border-primary/50" />
-                            <span class="material-symbols-outlined absolute text-white scale-0 peer-checked:scale-100 transition-transform text-lg pointer-events-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">check</span>
+                <form asp-action="Login" method="post" class="space-y-6">
+                    <div class="grid grid-cols-1 gap-6">
+                        <div class="space-y-2 group">
+                            <label for="email" class="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] flex items-center gap-2 px-1 group-focus-within:text-primary transition-colors">
+                                <span class="material-symbols-outlined text-sm">alternate_email</span> Email
+                            </label>
+                            <input type="email" name="email" id="email" 
+                                   class="premium-input w-full bg-[#050b14]/50 border border-white/10 rounded-2xl p-4 md:p-5 text-white placeholder-slate-600 focus:ring-4 focus:ring-primary/20 focus:bg-[#050b14]/80 focus:border-primary/50 transition-all outline-none font-bold" 
+                                   placeholder="identity@skyreserve.com" required />
                         </div>
-                        <span class="text-sm font-bold text-slate-400 group-hover/check:text-slate-200 transition-colors">Keep me signed in</span>
-                    </label>
-                    <a href="#" class="text-sm font-black text-primary hover:text-blue-300 transition-colors hover:underline underline-offset-4 decoration-primary/30">Lost Access?</a>
-                </div>
 
-                <div class="pt-4">
-                    <button type="submit" class="w-full py-6 bg-primary text-white rounded-[1.5rem] font-black shadow-2xl shadow-primary/30 hover:bg-blue-600 hover:shadow-primary/40 hover:-translate-y-1 active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-4 group">
-                        Authorize Entry
-                        <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform duration-300">arrow_forward</span>
-                    </button>
-                </div>
+                        <div class="space-y-2 group">
+                            <label for="password" class="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] flex items-center gap-2 px-1 group-focus-within:text-primary transition-colors">
+                                <span class="material-symbols-outlined text-sm">vpn_key</span> Access Token
+                            </label>
+                            <input type="password" name="password" id="password" 
+                                   class="premium-input w-full bg-[#050b14]/50 border border-white/10 rounded-2xl p-4 md:p-5 text-white placeholder-slate-600 focus:ring-4 focus:ring-primary/20 focus:bg-[#050b14]/80 focus:border-primary/50 transition-all outline-none font-bold" 
+                                   placeholder="••••••••" required />
+                        </div>
+                    </div>
 
-                <div class="text-center pt-8 border-t border-white/5">
-                    <p class="text-slate-400 text-sm font-bold">
-                        New to the network? 
-                        <a asp-action="SignUp" class="text-white hover:text-primary transition-colors underline underline-offset-8 decoration-primary/40 hover:decoration-primary">Register Account</a>
-                    </p>
-                </div>
-            </form>
+                    <div class="flex items-center justify-between py-2">
+                        <label class="flex items-center gap-3 cursor-pointer group/check">
+                            <div class="relative flex items-center">
+                                <input type="checkbox" id="remember" class="peer appearance-none w-5 h-5 border-2 border-white/10 rounded-lg checked:bg-primary checked:border-primary transition-all cursor-pointer" />
+                                <span class="material-symbols-outlined absolute text-white scale-0 peer-checked:scale-100 transition-transform text-sm pointer-events-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-black">check</span>
+                            </div>
+                            <span class="text-xs font-bold text-slate-400 group-hover/check:text-slate-200 transition-colors">Remember me</span>
+                        </label>
+                        <a href="#" class="text-xs font-black text-primary hover:text-blue-300 transition-colors">Forgot Password?</a>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" class="w-full py-5 bg-primary text-white rounded-[1.25rem] font-black shadow-xl shadow-primary/30 hover:bg-blue-600 hover:shadow-primary/50 hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-4 group">
+                            Authorize Entry
+                            <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform duration-300">arrow_forward</span>
+                        </button>
+                    </div>
+
+                    <div class="text-center pt-8 border-t border-white/5">
+                        <p class="text-slate-400 text-xs font-bold">
+                            Don't have an account? 
+                            <a asp-action="SignUp" class="text-white hover:text-primary transition-colors font-black ml-1 underline underline-offset-4 decoration-primary/30">Register Now</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
 
 <style>
+    .premium-input:-webkit-autofill,
+    .premium-input:-webkit-autofill:hover, 
+    .premium-input:-webkit-autofill:focus {
+        -webkit-text-fill-color: white !important;
+        -webkit-box-shadow: 0 0 0px 1000px #0a1526 inset !important;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+
     @@keyframes slow-pan {
         0% { transform: scale(1.05) translateX(0); }
         100% { transform: scale(1.1) translateX(-2%); }
@@ -95,14 +133,5 @@
     }
     .animate-shake {
         animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
-    }
-
-    /* Custom scrollbar for glass card if needed */
-    .glass-card::-webkit-scrollbar {
-        width: 4px;
-    }
-    .glass-card::-webkit-scrollbar-thumb {
-        background: rgba(255,255,255,0.1);
-        border-radius: 10px;
     }
 </style>

@@ -30,11 +30,11 @@
                     Experience the pinnacle of travel technology. SkyReserve seamlessly connects global nodes with unmatched precision and luxury.
                 </p>
                 <div class="flex flex-wrap gap-6">
-                    <a asp-controller="Flights" asp-action="Index" class="px-10 py-5 bg-primary text-white rounded-[2rem] font-black shadow-2xl shadow-primary/20 hover:scale-105 transition-all active:scale-95 flex items-center gap-3 group">
+                    <a href="@(Context.Session.GetString("UserName") != null ? Url.Action("Index", "Flights") : Url.Action("Login", "Account"))" class="px-10 py-5 bg-primary text-white rounded-[2rem] font-black shadow-2xl shadow-primary/20 hover:scale-105 transition-all active:scale-95 flex items-center gap-3 group">
                         Begin Expedition
                         <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                     </a>
-                    <a asp-controller="Flights" asp-action="Index" class="px-10 py-5 bg-white/5 backdrop-blur-xl border border-white/10 text-white rounded-[2rem] font-black hover:bg-white/10 transition-all">
+                    <a href="@(Context.Session.GetString("UserName") != null ? Url.Action("Index", "Flights") : Url.Action("Login", "Account"))" class="px-10 py-5 bg-white/5 backdrop-blur-xl border border-white/10 text-white rounded-[2rem] font-black hover:bg-white/10 transition-all">
                         View Fleet
                     </a>
                 </div>
@@ -89,7 +89,7 @@
                     <input type="date" class="w-full bg-white/5 border-none rounded-2xl p-5 text-white focus:ring-2 focus:ring-primary focus:bg-white/10 transition-all [color-scheme:dark]" />
                 </div>
                 <div class="flex items-end">
-                    <a asp-controller="Flights" asp-action="Index" class="w-full bg-primary text-white rounded-2xl h-[64px] font-black flex items-center justify-center gap-3 hover:bg-blue-600 transition-all active:scale-95 shadow-xl shadow-primary/20">
+                    <a href="@(Context.Session.GetString("UserName") != null ? Url.Action("Index", "Flights") : Url.Action("Login", "Account"))" class="w-full bg-primary text-white rounded-2xl h-[64px] font-black flex items-center justify-center gap-3 hover:bg-blue-600 transition-all active:scale-95 shadow-xl shadow-primary/20">
                         <span class="material-symbols-outlined">radar</span>
                         Sync Itinerary
                     </a>

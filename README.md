@@ -1,70 +1,77 @@
-# ✈️ SkyReserve - Flight Reservation System
+# ✈️ SkyReserve: Premium Flight Reservation System
 
-SkyReserve is a modern, premium flight reservation system built with ASP.NET Core MVC. It provides a seamless experience for users to book flights and for administrators to manage the system efficiently.
+SkyReserve is a cutting-edge ASP.NET MVC application designed to redefine flight management and reservation. Built with a focus on high-fidelity UI/UX, security, and performance.
 
 ---
 
 ## ✨ Key Features
 
-- **🚀 Premium UI/UX**: Futuristic design with smooth animations and responsive layouts.
-- **📅 Flight Management**: Easily search and view available flights.
-- **💳 Booking System**: Simple and intuitive booking process for passengers.
-- **🛠️ Admin Dashboard**: Full control over flights, bookings, and passengers.
-- **🌓 Dark Mode**: Sleek dark aesthetic out of the box.
+### 🛡️ Secure Authentication
+- **Custom Auth System**: Robust Login and Sign-Up implementation.
+- **Security Protocol**: Passwords are encrypted using high-security hashing (SHA256).
+- **Session Management**: Intelligent user tracking to protect administrative routes.
+
+### 💎 World-Class UI/UX
+- **Glassmorphism Design**: Cinematic aesthetics with backdrop filters and depth.
+- **Cinematic Backgrounds**: Dynamic, slow-panning atmospheric visuals.
+- **Interactive Micro-animations**: GSAP-inspired transitions and hover effects.
+- **Full Dark Mode**: Sleek, energy-efficient interface for modern users.
+
+### ✈️ Core Modules
+- **Flight Management**: Real-time flight tracking and logistics.
+- **Passenger Portal**: Simplified passenger data management.
+- **Booking Engine**: Seamless reservation flow with validation.
 
 ---
 
-## 🛠️ Tech Stack
+## 🚀 Technical Stack
 
-- **Backend**: ASP.NET Core MVC 9.0
-- **Database**: SQL Server (Entity Framework Core)
-- **Frontend**: Vanilla CSS (Custom Glassmorphism Design), JavaScript
-- **Animations**: AOS (Animate On Scroll), GSAP
+- **Backend**: ASP.NET Core 8.0 (MVC)
+- **Database**: Entity Framework Core with SQL Server
+- **Frontend**: Vanilla CSS, Tailwind CSS (via CDN), Modern JavaScript
+- **Icons**: Google Material Symbols
+- **Fonts**: Inter / Outfit
 
 ---
 
-## 🚀 Getting Started
+## 🛠️ Installation & Setup
 
-### Prerequisites
-
-- [.NET 9.0 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
-- [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
-
-### Installation
-
-1. **Clone the repository**:
+1. **Clone the Repository**
    ```bash
    git clone https://github.com/Emad-Ahmed6699/SkyReserve-ASP.NET-MVC.git
    ```
 
-2. **Update Database**:
-   Navigate to the project folder and run:
-   ```bash
-   dotnet ef database update
+2. **Configure Database**
+   Update the `ConnectionStrings` in `appsettings.json` to point to your local SQL Server instance.
+
+3. **Apply Migrations**
+   Open the **Package Manager Console** and run:
+   ```powershell
+   Update-Database
    ```
 
-3. **Run the application**:
+4. **Launch Application**
+   Press `F5` in Visual Studio or run:
    ```bash
    dotnet run
    ```
 
 ---
 
-## 📂 Project Structure
+## 📸 Interface Preview
 
-- `Controllers/`: Application logic and request handling.
-- `Models/`: Data structures and database schemas.
-- `Views/`: Razor components and UI layouts.
-- `wwwroot/`: Static assets (CSS, JS, Images).
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to open an issue or submit a pull request.
+*(Screenshots coming soon)*
+- [x] Premium Landing Page
+- [x] Dual-Column Auth Portal
+- [x] Admin Dashboard
 
 ---
 
-## 📄 License
+## 👨‍💻 Author
+**Emad Ahmed**
+- [GitHub](https://github.com/Emad-Ahmed6699)
 
-This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details.
+---
+
+> [!TIP]
+> SkyReserve is optimized for high-resolution displays. For the best experience, use Chrome or Edge.
